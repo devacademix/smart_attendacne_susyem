@@ -19,6 +19,11 @@
 
 # production
 /build
+node_modules/
+.next/
+.env
+dist/
+*.log
 
 # misc
 .DS_Store
