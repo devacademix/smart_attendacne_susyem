@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
+
 
 const navLinks = [
   { label: "Overview", href: "#overview" },
@@ -15,6 +17,8 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
+
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -135,14 +139,16 @@ export default function Navbar() {
 
           {/* Right CTA */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px", flexShrink: 0 }}>
-            <motion.button
-              className="btn-primary hidden md:block"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              id="navbar-demo-btn"
-            >
-              Request Demo
-            </motion.button>
+          
+<motion.button
+  className="btn-primary hidden md:block"
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+  id="navbar-demo-btn"
+  onClick={() => router.push("http://67.205.132.228/login/")}
+>
+  Dashboard Login
+</motion.button>
 
             {/* Mobile hamburger */}
             <button
@@ -203,7 +209,9 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <button className="btn-primary" style={{ marginTop: "8px" }}>
+              <button className="btn-primary" style={{ marginTop: "8px" }}
+                onClick={() => router.push("http://67.205.132.228/login/")}
+>
                 Request Demo
               </button>
             </div>
